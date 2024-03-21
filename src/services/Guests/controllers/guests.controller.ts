@@ -8,7 +8,7 @@ export class GuestsController {
     async uploadGuestInformation(req: Request, res: Response){
         try {
             const { guests } = req.body
-            console.log(guests[1]);
+            
             // Abrir una conexión a la base de datos (o crearla si no existe)
             const db = new sqlite3.Database('invitados.db');
 
@@ -25,7 +25,6 @@ export class GuestsController {
 
             // // Inicializar los datos (esto solo se hace la primera vez)
             guests.forEach((guest:Guests) => {
-                console.log(guest.Name);
             db.run(`
                 INSERT INTO Invitados (Name, Relation, Confirmation, IsGroomsman, IsBridesmaid)
                 VALUES (?, ?, ?, ?, ?)`, [guest.Name, guest.Relation, guest.Confirmation, guest.IsGroomsman, guest.IsBridesmaid]);
