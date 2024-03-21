@@ -2,7 +2,7 @@ import express , { Application } from "express";
 import http from 'http'
 import cors from 'cors'
 import { ConfigServer } from "./config/config";
-import { InvitationsRouter } from "./services/Invitations/routers/invitations.router";
+import { GuestsRouter } from "./services/Guests/routers/guests.router";
 
 class Server extends ConfigServer {
     private app: Application;
@@ -29,7 +29,7 @@ class Server extends ConfigServer {
 
     routes(): express.Router[] {
         return [
-            new InvitationsRouter().router,
+            new GuestsRouter().router,
         ];
     }
 
