@@ -73,7 +73,7 @@ export class GuestsController {
             const  filtered_members : Guests [] = await this.ejecutarConsulta(`select * from Invitados where Name like '%${name}%'`)                  
 
             if(filtered_members.length === 0 || !filtered_members){
-                res.json({message: 'No estas invitado!!!!'})
+                res.json({message: 'No estas invitado', data: []})
             }else{
                 // Consultar los datos filtrados por parametro 'name'
                 const result_members = data_members.filter((member:Guests)=>filtered_members[0].Relation === member.Relation)
@@ -92,8 +92,8 @@ export class GuestsController {
     async updateGuestInformation(req: Request, res: Response){
         try {
             const { id } = req.params
-            const { Name } = req.query
-            await this.ejecutarConsulta(`update Invitados set Name = '${Name}' where id = ${Number(id)}`)
+            const { Name, Relation } = req.query
+            await this.ejecutarConsulta(`update Invitados set Name = '${Name}', Relation = ${Number(Relation)} where id = ${Number(id)}`)
             res.status(200).json({
                 message: "Registro actualizado correctamente"
             })
