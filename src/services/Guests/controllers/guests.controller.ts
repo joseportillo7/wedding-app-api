@@ -132,6 +132,7 @@ export class GuestsController {
             res.json({message: 'Se agrego al invitado correctamente!'})
         } catch (error) {
             console.log(error);
+            res.json({message: "Error agregando invitado!"})
         }
     }
 }
