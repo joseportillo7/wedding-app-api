@@ -126,10 +126,10 @@ export class GuestsController {
             
             //Realizar el insert a Invitados
             const query = `insert into Invitados(id, Name, Relation, Confirmation, IsGroomsman, IsBridesmaid)
-                           values(${lastID}, ${Name}, ${Relation}, ${Confirmation}, ${IsGroomsman}, ${IsBridesmaid})`
+                           values(${lastID}, '${Name}', ${Relation}, ${Confirmation}, ${IsGroomsman}, ${IsBridesmaid})`
 
             const result = await this.ejecutarConsulta(query)
-            res.json({message: 'Sse agrego el invitado correctamente'})
+            res.json({message: 'Se agrego al invitado correctamente!'})
         } catch (error) {
             console.log(error);
         }
