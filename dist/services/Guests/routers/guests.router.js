@@ -10,6 +10,7 @@ class GuestsRouter extends router_1.BaseRouter {
     routes() {
         this.router.post('/upload', (req, res) => this.controller.uploadGuestInformation(req, res));
         this.router.get('/guest', (req, res) => this.controller.getGuestInformation(req, res));
+        this.router.get('/guest/all', (req, res) => this.controller.getGuestAll(req, res));
         this.router.put('/guest/:id', (req, res) => this.controller.updateGuestInformation(req, res));
         this.router.put('/guest/confirmation/:id', (req, res) => this.controller.updateGuestConfirmation(req, res));
         this.router.post('/guest', (req, res) => this.controller.createGuest(req, res));

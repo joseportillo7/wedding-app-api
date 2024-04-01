@@ -89,6 +89,26 @@ export class GuestsController {
         }
     }
 
+    async getGuestAll(req: Request, res: Response){
+        try {
+            //Consulta con toda la informacion
+            const data_members = await this.ejecutarConsulta(`select * from Invitados`)            
+            res.json({message: "Consulta ejecutada correctamente", data: data_members});
+        } catch (error) {
+            
+        }
+    }
+
+    async getGuestConfirmation(req: Request, res: Response){
+        try {
+            const data_members = await this.ejecutarConsulta(`select * from Invitados where Confirmation = 1`)
+            const data_members_length = data_members.length
+            res.json({message: "Consulta ejecutada correctamente", confirmados: data_members_length, data: data_members})
+        } catch (error) {
+            res.json({message: "Error ", error})
+        }
+    }
+
     async updateGuestInformation(req: Request, res: Response){
         try {
             const { id } = req.params

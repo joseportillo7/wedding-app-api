@@ -110,6 +110,18 @@ class GuestsController {
             }
         });
     }
+    getGuestAll(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                //Consulta con toda la informacion
+                const data_members = yield this.ejecutarConsulta(`select * from Invitados`);
+                console.log("holaaaaaa");
+                res.json({ message: "Consulta ejecutada correctamente", data: data_members });
+            }
+            catch (error) {
+            }
+        });
+    }
     updateGuestInformation(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
